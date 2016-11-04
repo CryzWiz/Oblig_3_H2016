@@ -124,7 +124,15 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     
     return set;
   }
-      
+  // EXERCISE BEGINS HERE
+  
+  
+  /* (Modify MyHashMap with duplicate keys) Modify MyHashMap to allow duplicate
+	*	keys for entries. You need to modify the implementation for the put(key,
+	*	value) method. Also add a new method named getAll(key) that returns a set
+	*	of values that match the key in the map.
+	*/
+  
   @Override /** Add an entry (key, value) into the map */
   public V put(K key, V value) {
     if (get(key) != null) { // The key is already in the map
@@ -147,7 +155,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
       
       rehash();
     }
-    
+
     int bucketIndex = hash(key.hashCode());
     
     // Create a linked list for the bucket if it is not created
@@ -162,7 +170,10 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     
     return value;  
   } 
- 
+  
+  
+  // EXERCISE ENDS HERE
+  
   @Override /** Remove the entries for the specified key */
   public void remove(K key) {
     int bucketIndex = hash(key.hashCode());
