@@ -1,4 +1,4 @@
-/* Code imported from the book
+/* Code imported from the textbook
  * 
  */
 public class TestMyHashMap {
