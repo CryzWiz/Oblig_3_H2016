@@ -1,6 +1,6 @@
 /* Code imported from the textbook
  * 
- */ 
+ */  
 public class TestMyHashMap {
   public static void main(String[] args) {
     // Create a map
