@@ -7,6 +7,7 @@ public class TestMyHashMap {
     MyMap<String, Integer> map = new MyHashMap<>();
     map.put("Smith", 30);
     map.put("Anderson", 31);
+    map.put("Anderson", 32);
     map.put("Lewis", 29);
     map.put("Cook", 29);
     map.put("Smith", 65);
@@ -23,6 +24,11 @@ public class TestMyHashMap {
 
     map.remove("Smith");
     System.out.println("Entries in map: " + map);
+    
+    /* Testing the getAll(key) method. This should return age 31 and 32
+     * 
+     */
+    System.out.println("All values for Key Anderson: " + map.getAll("Anderson"));
 
     map.clear();
     System.out.println("Entries in map: " + map);
