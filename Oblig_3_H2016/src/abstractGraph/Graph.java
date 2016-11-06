@@ -36,5 +36,7 @@ public interface Graph<V> {
   /** Obtain a depth-first search tree */
   public AbstractGraph<V>.Tree dfs(int v);
 
+  /** Obtain a breadth-first search tree */
+  public AbstractGraph<V>.Tree bfs(int v);
 }
 
