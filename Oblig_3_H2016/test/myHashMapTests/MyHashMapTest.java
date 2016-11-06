@@ -1,12 +1,9 @@
 package myHashMapTests;
 import static org.junit.Assert.*;
-
 import java.util.HashSet;
 import java.util.Set;
-
 import myHashMap.MyHashMap;
 import myHashMap.MyMap;
-
 import org.junit.Before;
 import org.junit.Test;
 
