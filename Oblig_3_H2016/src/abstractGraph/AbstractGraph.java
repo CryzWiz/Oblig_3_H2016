@@ -196,35 +196,6 @@ public abstract class AbstractGraph<V> implements Graph<V> {
     }
   }
 
-  @Override /** Starting bfs search from vertex v */
-  /** To be discussed in Section 28.7 */
-  public Tree bfs(int v) {
-    List<Integer> searchOrder = new ArrayList<>();
-    int[] parent = new int[vertices.size()];
-    for (int i = 0; i < parent.length; i++)
-      parent[i] = -1; // Initialize parent[i] to -1
-
-    java.util.LinkedList<Integer> queue =
-      new java.util.LinkedList<>(); // list used as a queue
-    boolean[] isVisited = new boolean[vertices.size()];
-    queue.offer(v); // Enqueue v
-    isVisited[v] = true; // Mark it visited
-
-    while (!queue.isEmpty()) {
-      int u = queue.poll(); // Dequeue to u
-      searchOrder.add(u); // u searched
-      for (Edge e: neighbors.get(u)) {
-        if (!isVisited[e.v]) {
-          queue.offer(e.v); // Enqueue w
-          parent[e.v] = u; // The parent of w is u
-          isVisited[e.v] = true; // Mark it visited
-        }
-      }
-    }
-
-    return new Tree(v, parent, searchOrder);
-  }
-
   /** Tree inner class inside the AbstractGraph class */
   /** To be discussed in Section 28.5 */
   public class Tree {
