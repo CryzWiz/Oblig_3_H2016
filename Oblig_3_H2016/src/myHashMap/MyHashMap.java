@@ -1,3 +1,5 @@
+package myHashMap;
+
 /* Code imported from the textbook
  * 
  */ 

@@ -1,5 +1,6 @@
-import java.util.Set;
+package myHashMap;
 
+import java.util.Set;
 /* Code imported from the textbook
  * 
  */  
@@ -68,3 +69,4 @@ public interface MyMap<K, V> {
 		}
 	}
 }    
+

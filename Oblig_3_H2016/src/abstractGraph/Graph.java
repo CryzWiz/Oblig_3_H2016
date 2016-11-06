@@ -1,3 +1,4 @@
+package abstractGraph;
 /* Code imported from the textbook
  * 
  */
@@ -38,3 +39,4 @@ public interface Graph<V> {
   /** Obtain a breadth-first search tree */
   public AbstractGraph<V>.Tree bfs(int v);
 }
+
