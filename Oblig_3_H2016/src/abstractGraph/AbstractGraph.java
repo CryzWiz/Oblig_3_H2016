@@ -286,6 +286,8 @@ public abstract class AbstractGraph<V> implements Graph<V> {
     return new Tree(v, parent, searchOrder);
   }
 
+
+
   /** Tree inner class inside the AbstractGraph class */
   /** To be discussed in Section 28.5 */
   public class Tree {
@@ -348,12 +350,13 @@ public abstract class AbstractGraph<V> implements Graph<V> {
      * using bfs search
      * Oblig part B
      */
-    public List<Integer> getPath(int u, int v){
-    	if(!isConnected())	// If we can't find a path, return null
-    		return null;	// and we use our new method isConnected()
-    	else
-    	    return (List<Integer>)bfs(u).getPath(v);	// Else return the path
-    }
+    public List<Integer> getPath(int u, int v) {
+		Tree getpathtree = bfs(v);				// Make a bfs tree - starting in v since we want this reversed
+		List<Integer> finalpath = (List<Integer>) bfs(v).getPath(u);	// make the final path by getting the path to u
+		if(finalpath.size() > 1)	//If finalPath size is bigger than 1 
+			return finalpath;		// return it
+		return null;				// else return null
+	}
     
     
     /* Oblig 
