@@ -3,8 +3,11 @@ This is the psudo code I started out with
 
 Psudo code
 DFS(source):
-stack <- new Deque
-	visited <- {} // empty 
+
+	stack <- new Deque
+
+	visited <- {}
+	
 	setstack.push(source)
 
 	while (stack is not empty):
