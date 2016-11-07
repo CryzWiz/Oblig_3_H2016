@@ -199,14 +199,6 @@ public abstract class AbstractGraph<V> implements Graph<V> {
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
   /* OBLIG EXERCISE METHOD
    * Oblig part A   
    * 
@@ -247,12 +239,6 @@ public abstract class AbstractGraph<V> implements Graph<V> {
   /* OBLIG EXERCISE A END
    * 
    */
-  
-  
-  
-  
-  
-  
   
   
   
@@ -337,12 +323,7 @@ public abstract class AbstractGraph<V> implements Graph<V> {
     
     
     
-    
-    
-    
-    
-    
-    
+
     
     
     /* Oblig 
