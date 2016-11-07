@@ -12,6 +12,7 @@ import abstractGraph.UnweightedGraph;
  * base all our test on the fact that if our method 
  * don't return the same as the dfs method provided in the book
  * we have a error
+ * And we added a third dfs to test a unConnected tree
  */
 public class AbstractGraphTest {
 	String[] vertices = {"Seattle", "San Francisco", "Los Angeles",
@@ -31,13 +32,26 @@ public class AbstractGraphTest {
 		      {10, 2}, {10, 4}, {10, 8}, {10, 11},
 		      {11, 8}, {11, 9}, {11, 10}
 		    };
-	public Graph<String> graph = new UnweightedGraph<>(vertices, edges);
-	public AbstractGraph<String>.Tree dfsWithDeque = graph.dfsWithDeque(graph.getIndex("Houston"));
-	public AbstractGraph<String>.Tree dfs = graph.dfs(graph.getIndex("Houston"));
+	int[][] disconnectededges = {
+		      {0, 1}, {0, 3}, {0, 5},
+		      {1, 0}, {1, 2}, {1, 3},
+		      {2, 1}, {2, 3}, {2, 4}, {2, 10},
+		      {3, 0}, {3, 1}, {3, 2}, {3, 4}, {3, 5},
+		      {8, 4}, {8, 7}, {8, 9}, {8, 10}, {8, 11},
+		      {9, 8}, {9, 11},
+		      {10, 2}, {10, 4}, {10, 8}, {10, 11},
+		      {11, 8}, {11, 9}, {11, 10}
+		    };
+	public Graph<String> connectedgraph = new UnweightedGraph<>(vertices, edges);
+	public Graph<String> disconnectedgraph = new UnweightedGraph<>(vertices, disconnectededges);
+	public AbstractGraph<String>.Tree dfsWithDeque = connectedgraph.dfsWithDeque(connectedgraph.getIndex("Houston"));
+	public AbstractGraph<String>.Tree dfsWithDequeDisConnected = disconnectedgraph.dfsWithDeque(disconnectedgraph.getIndex("Houston"));
+	public AbstractGraph<String>.Tree dfs = connectedgraph.dfs(connectedgraph.getIndex("Houston"));
 	
 	@Test 
 	public void checkIfdfsWithDequeReturnsCorrectPath() {
-		assertEquals(dfsWithDeque.getPath(0), dfs.getPath(0));
+		for(int i = 0; i < 11; i++)
+		assertEquals(dfsWithDeque.getPath(i), dfs.getPath(i));
 	}
 	
 	@Test
@@ -50,12 +64,28 @@ public class AbstractGraphTest {
 		List<Integer> searchOrdersdfs = dfs.getSearchOrder();
 		List<Integer> searchOrdersdfsWithDeque = dfs.getSearchOrder();
 		for (int i = 0; i < searchOrdersdfsWithDeque.size(); i++)
-			assertEquals(graph.getVertex(searchOrdersdfsWithDeque.get(i)), graph.getVertex(searchOrdersdfs.get(i)));
+			assertEquals(connectedgraph.getVertex(searchOrdersdfsWithDeque.get(i)), connectedgraph.getVertex(searchOrdersdfs.get(i)));
 	}
 	@Test
 	public void checkIfWeGetCorrectPathInReturnFromThenewGetPathMethod(){
-		String CorrectResponce = "[Houston, Dallas, Los Angeles, San Francisco, Seattle]";
-		assertEquals(dfs.getPath(0,11).toString(), CorrectResponce);
+		String CorrectPathFromHoustonToSeattle = "[Houston, Dallas, Los Angeles, San Francisco, Seattle]";
+		String CorrectPathFromAtlantaToSeattle = "[Atlanta, Kansas City, Denver, Seattle]";
+		String CorrectPathFromBostonToDenver = "[Boston, Chicago, Denver, Los Angeles]";
+		assertEquals(dfs.getPath(0,11).toString(), CorrectPathFromHoustonToSeattle);
+		assertEquals(dfsWithDeque.getPath(0,11).toString(), CorrectPathFromHoustonToSeattle);
+		assertEquals(dfs.getPath(0,8).toString(), CorrectPathFromAtlantaToSeattle);
+		assertEquals(dfsWithDeque.getPath(0,8).toString(), CorrectPathFromAtlantaToSeattle);
+		assertEquals(dfs.getPath(2,6).toString(), CorrectPathFromBostonToDenver);
+		assertEquals(dfsWithDeque.getPath(2,6).toString(), CorrectPathFromBostonToDenver);
+	}
+	@Test
+	public void testIfisConnectedReturnsTrueForConnectedTree(){
+		assertTrue(dfsWithDeque.isConnected());
+		assertTrue(dfs.isConnected());
+	}
+	@Test
+	public void testIfisConnectedReturnsFalseForUnConnectedTree(){
+		assertFalse(dfsWithDequeDisConnected.isConnected());
 	}
 }
 

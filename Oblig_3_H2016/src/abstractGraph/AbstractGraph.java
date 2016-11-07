@@ -2,7 +2,7 @@ package abstractGraph;
 
 import java.util.*;
 /* Code imported from the textbook
- * 
+ * Code implemented or added by me is commented along the way
  */
 public abstract class AbstractGraph<V> implements Graph<V> {
   protected List<V> vertices = new ArrayList<>(); // Store vertices
@@ -196,10 +196,21 @@ public abstract class AbstractGraph<V> implements Graph<V> {
     }
   }
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   /* OBLIG EXERCISE METHOD
-   *    
+   * Oblig part A   
    * 
-   */
+   */ 
   public Tree dfsWithDeque(int v) { // copied from Tree dfs
 	  // From exercise
 	  Deque<Integer> stack = new ArrayDeque<Integer>(); // har pop() / push() etc
@@ -229,12 +240,23 @@ public abstract class AbstractGraph<V> implements Graph<V> {
 	    	}
 	    }
 	    
-	    return new Tree(v,parent,searchOrder); // Return new Tree
+	    return new Tree(v,parent,searchOrder); // Return a search tree
 	    
   }
 
+  /* OBLIG EXERCISE A END
+   * 
+   */
   
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
 @Override /** Starting bfs search from vertex v */
   /** To be discussed in Section 28.7 */
   public Tree bfs(int v) {
@@ -270,7 +292,7 @@ public abstract class AbstractGraph<V> implements Graph<V> {
     private int root; // The root of the tree
     private int[] parent; // Store the parent of each vertex
     private List<Integer> searchOrder; // Store the search order
-
+ 
     /** Construct a tree with root, parent, and searchOrder */
     public Tree(int root, int[] parent, List<Integer> searchOrder) {
       this.root = root;
@@ -311,18 +333,52 @@ public abstract class AbstractGraph<V> implements Graph<V> {
       return path;
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /* Oblig 
      * Find the path between 2 vertex
      * using bfs search
+     * Oblig part B
      */
     public List<Integer> getPath(int u, int v){
     	List<Integer> path = (List<Integer>) bfs(u).getPath(v); // Use bfs to get the path from u to v
-    	if(bfs(u).getPath(v) == null)	// If we cant find a path, return null
+    	if(bfs(u).getPath(v) == null)	// If we can't find a path, return null
     		return null;
     	else
     	    return (List<Integer>) path;	// Else return the path
     }
-
+    
+    
+    /* Oblig 
+     * isConnected method
+     * Oblig part C
+     */
+    public boolean isConnected(){						// If searchOrder is the same size as vertices
+		return searchOrder.size() == vertices.size();	// We have searched them all and they are connected
+    }
+    
+    
+    
+    
+    
+    
+    /* OBLIG EXERCISE B AND C END
+     * 
+     */
+    
+    
+    
+    
+    
+    
     /** Print a path from the root to vertex v */
     public void printPath(int index) {
       List<V> path = getPath(index);

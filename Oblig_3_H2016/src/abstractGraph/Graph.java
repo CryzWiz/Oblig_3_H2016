@@ -3,7 +3,7 @@ package abstractGraph;
 import java.util.List;
 
 /* Code imported from the textbook
- * 
+ * Code implemented or added by me is commented along the way
  */
 public interface Graph<V> {
   /** Return the number of vertices in the graph */
@@ -41,6 +41,7 @@ public interface Graph<V> {
 
   /** Obtain a breadth-first search tree */
   public AbstractGraph<V>.Tree bfs(int v);
+  
   /** Added as part of the exercise */
   public AbstractGraph<V>.Tree dfsWithDeque(int index);
   

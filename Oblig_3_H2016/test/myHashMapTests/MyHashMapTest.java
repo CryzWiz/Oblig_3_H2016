@@ -62,6 +62,8 @@ public class MyHashMapTest {
 		Set<Integer> AndersonRealValues = new HashSet<Integer>();
 		AndersonRealValues.add(31);AndersonRealValues.add(32);
 		assertEquals(map.getAll("Anderson"), AndersonRealValues);
+		map.put("Anderson", 51);AndersonRealValues.add(51); // Add one more Anderson
+		assertEquals(map.getAll("Anderson"), AndersonRealValues); // And check that we now have 3 Andersons
 	}
 	
 	@Test

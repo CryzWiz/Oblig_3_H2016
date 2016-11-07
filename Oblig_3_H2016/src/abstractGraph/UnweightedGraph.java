@@ -2,7 +2,7 @@ package abstractGraph;
 
 import java.util.List;
 /* Code imported from the textbook
- * 
+ * Code implemented or added by me is commented along the way
  */
 public class UnweightedGraph<V> extends AbstractGraph<V> {
   /** Construct an empty graph */

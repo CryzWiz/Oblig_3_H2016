@@ -2,8 +2,8 @@ package myHashMap;
 
 import java.util.Set;
 /* Code imported from the textbook
- * 
- */  
+ * Code implemented or added by me is commented along the way
+ */
 
 public interface MyMap<K, V> {
 	
