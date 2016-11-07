@@ -70,13 +70,13 @@ public class AbstractGraphTest {
 	public void checkIfWeGetCorrectPathInReturnFromThenewGetPathMethod(){
 		String CorrectPathFromHoustonToSeattle = "[Houston, Dallas, Los Angeles, San Francisco, Seattle]";
 		String CorrectPathFromAtlantaToSeattle = "[Atlanta, Kansas City, Denver, Seattle]";
-		String CorrectPathFromBostonToDenver = "[Boston, Chicago, Denver, Los Angeles]";
+		String CorrectPathFromBostonToDenver = "[Boston, Chicago, Denver]";
 		assertEquals(CorrectPathFromHoustonToSeattle, dfs.getPath(11,0).toString());
 		assertEquals(CorrectPathFromHoustonToSeattle, dfsWithDeque.getPath(11,0).toString());
 		assertEquals(CorrectPathFromAtlantaToSeattle, dfs.getPath(8,0).toString());
 		assertEquals(CorrectPathFromAtlantaToSeattle, dfsWithDeque.getPath(8,0).toString());
-		assertEquals(CorrectPathFromBostonToDenver, dfs.getPath(6,2).toString());
-		assertEquals(CorrectPathFromBostonToDenver, dfsWithDeque.getPath(6,2).toString());
+		assertEquals(CorrectPathFromBostonToDenver, dfs.getPath(6,3).toString());
+		assertEquals(CorrectPathFromBostonToDenver, dfsWithDeque.getPath(6,3).toString());
 	}
 	@Test
 	public void testIfisConnectedReturnsTrueForConnectedTree(){
