@@ -175,7 +175,7 @@ public abstract class AbstractGraph<V> implements Graph<V> {
     boolean[] isVisited = new boolean[vertices.size()];
 
     // Recursively search
-    dfs(v, parent, searchOrder, isVisited);
+   dfs(v, parent, searchOrder, isVisited);
 
     // Return a search tree
     return new Tree(v, parent, searchOrder);
@@ -195,8 +195,46 @@ public abstract class AbstractGraph<V> implements Graph<V> {
       }
     }
   }
+  
+  /* OBLIG EXERCISE METHOD
+   *    
+   * 
+   */
+  public Tree dfsWithDeque(int v) { // copied from Tree dfs
+	  // From exercise
+	  Deque<Integer> stack = new ArrayDeque<Integer>(); // har pop() / push() etc
+	  
+	  List<Integer> searchOrder = new ArrayList<Integer>();
+	  boolean[] isVisited = new boolean[vertices.size()];
+	  int[] parent = new int[vertices.size()];
+	    for (int i = 0; i < parent.length; i++)
+	      parent[i] = -1; // Initialize parent[i] to -1
+	    							// copy ends
+	    
+	    stack.push(v); // put source
+	    while(!stack.isEmpty()){ // While we still have some in the stack    	
+	    	int current = stack.pop(); // Get the next one
+	    	if(!isVisited[current]){ // If we have'nt visited this one
+	    		isVisited[current] = true;	// Set visited to true
+	    		searchOrder.add(current);	// add it to searchorder
+	    		List<Edge> currentNeighbors  = neighbors.get(current); // The the edges
+	    		for(int i = currentNeighbors.size() - 1; i >= 0; i--){ // For every edge
+	    			Edge e = currentNeighbors.get(i);	// Check their edges
+	    			
+	    			if(isVisited[e.v] == false){ // If e.v is not visited
+	    				parent[e.v] = current;	// Set parent to vertex e.v to current
+	    			}
+	    			stack.push(e.v);	// Push vertex e.v to the stack
+	    		}
+	    	}
+	    }
+	    
+	    return new Tree(v,parent,searchOrder); // Return new Tree
+	    
+  }
+  
 
-  @Override /** Starting bfs search from vertex v */
+@Override /** Starting bfs search from vertex v */
   /** To be discussed in Section 28.7 */
   public Tree bfs(int v) {
     List<Integer> searchOrder = new ArrayList<>();

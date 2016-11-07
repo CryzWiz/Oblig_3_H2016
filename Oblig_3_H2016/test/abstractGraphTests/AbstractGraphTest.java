@@ -2,13 +2,25 @@ package abstractGraphTests;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 
+import abstractGraph.AbstractGraph;
+import abstractGraph.Graph;
+import abstractGraph.UnweightedGraph;
+
+
+/* Since we have a dfs method that works, we can
+ * base all our test on the fact that if our method 
+ * don't return the same as the dfs method provided in the book
+ * we have a error
+ */
 public class AbstractGraphTest {
-	public String[] vertices = {"Seattle", "San Francisco", "Los Angeles",
+	String[] vertices = {"Seattle", "San Francisco", "Los Angeles",
 		      "Denver", "Kansas City", "Chicago", "Boston", "New York",
 		      "Atlanta", "Miami", "Dallas", "Houston"};
-	public int[][] edges = {
+	int[][] edges = {
 		      {0, 1}, {0, 3}, {0, 5},
 		      {1, 0}, {1, 2}, {1, 3},
 		      {2, 1}, {2, 3}, {2, 4}, {2, 10},
@@ -22,10 +34,26 @@ public class AbstractGraphTest {
 		      {10, 2}, {10, 4}, {10, 8}, {10, 11},
 		      {11, 8}, {11, 9}, {11, 10}
 		    };
+	public Graph<String> graph = new UnweightedGraph<>(vertices, edges);
+	public AbstractGraph<String>.Tree dfsWithDeque = graph.dfsWithDeque(graph.getIndex("Houston"));
+	public AbstractGraph<String>.Tree dfs = graph.dfs(graph.getIndex("Houston"));
+	
+	@Test 
+	public void checkIfdfsWithDequeReturnsCorrectPath() {
+		assertEquals(dfsWithDeque.getPath(0), dfs.getPath(0));
+	}
 	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void checkNewdfsAgainstgetNumberOfVerticesFound(){
+		assertEquals(dfsWithDeque.getNumberOfVerticesFound(), dfs.getNumberOfVerticesFound());
+		
 	}
-
+	@Test
+	public void checkIfSearchOrdersAreTheSame(){
+		List<Integer> searchOrdersdfs = dfs.getSearchOrder();
+		List<Integer> searchOrdersdfsWithDeque = dfs.getSearchOrder();
+		for (int i = 0; i < searchOrdersdfsWithDeque.size(); i++)
+			assertEquals(graph.getVertex(searchOrdersdfsWithDeque.get(i)), graph.getVertex(searchOrdersdfs.get(i)));
+	}
 }
+
