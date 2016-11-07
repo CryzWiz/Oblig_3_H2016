@@ -1,4 +1,7 @@
 package abstractGraph;
+
+import java.util.List;
+
 /* Code imported from the textbook
  * 
  */
@@ -38,7 +41,8 @@ public interface Graph<V> {
 
   /** Obtain a breadth-first search tree */
   public AbstractGraph<V>.Tree bfs(int v);
-
-public AbstractGraph<V>.Tree dfsWithDeque(int index);
+  /** Added as part of the exercise */
+  public AbstractGraph<V>.Tree dfsWithDeque(int index);
+  
 }
 

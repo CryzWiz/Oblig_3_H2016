@@ -232,6 +232,7 @@ public abstract class AbstractGraph<V> implements Graph<V> {
 	    return new Tree(v,parent,searchOrder); // Return new Tree
 	    
   }
+
   
 
 @Override /** Starting bfs search from vertex v */
@@ -308,6 +309,18 @@ public abstract class AbstractGraph<V> implements Graph<V> {
       while (index != -1);
 
       return path;
+    }
+    
+    /* Oblig 
+     * Find the path between 2 vertex
+     * using bfs search
+     */
+    public List<Integer> getPath(int u, int v){
+    	List<Integer> path = (List<Integer>) bfs(u).getPath(v); // Use bfs to get the path from u to v
+    	if(bfs(u).getPath(v) == null)	// If we cant find a path, return null
+    		return null;
+    	else
+    	    return (List<Integer>) path;	// Else return the path
     }
 
     /** Print a path from the root to vertex v */

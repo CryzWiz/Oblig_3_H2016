@@ -1,11 +1,8 @@
 package abstractGraphTests;
 
 import static org.junit.Assert.*;
-
 import java.util.List;
-
 import org.junit.Test;
-
 import abstractGraph.AbstractGraph;
 import abstractGraph.Graph;
 import abstractGraph.UnweightedGraph;
@@ -54,6 +51,11 @@ public class AbstractGraphTest {
 		List<Integer> searchOrdersdfsWithDeque = dfs.getSearchOrder();
 		for (int i = 0; i < searchOrdersdfsWithDeque.size(); i++)
 			assertEquals(graph.getVertex(searchOrdersdfsWithDeque.get(i)), graph.getVertex(searchOrdersdfs.get(i)));
+	}
+	@Test
+	public void checkIfWeGetCorrectPathInReturnFromThenewGetPathMethod(){
+		String CorrectResponce = "[Houston, Dallas, Los Angeles, San Francisco, Seattle]";
+		assertEquals(dfs.getPath(0,11).toString(), CorrectResponce);
 	}
 }
 
