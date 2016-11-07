@@ -1,8 +1,8 @@
 package myHashMap;
 
 /* Code imported from the textbook
- * 
- */ 
+ * Code implemented or added by me is commented along the way
+ */
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
