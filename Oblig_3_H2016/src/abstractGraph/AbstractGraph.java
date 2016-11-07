@@ -349,11 +349,10 @@ public abstract class AbstractGraph<V> implements Graph<V> {
      * Oblig part B
      */
     public List<Integer> getPath(int u, int v){
-    	List<Integer> path = (List<Integer>) bfs(u).getPath(v); // Use bfs to get the path from u to v
-    	if(bfs(u).getPath(v) == null)	// If we can't find a path, return null
-    		return null;
+    	if(!isConnected())	// If we can't find a path, return null
+    		return null;	// and we use our new method isConnected()
     	else
-    	    return (List<Integer>) path;	// Else return the path
+    	    return (List<Integer>)bfs(u).getPath(v);	// Else return the path
     }
     
     
